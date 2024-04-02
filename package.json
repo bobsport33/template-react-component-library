@@ -1,6 +1,6 @@
 {
-    "name": "template-react-component-library",
-    "version": "0.0.1",
+    "name": "@bobsport33/template-react-component-library",
+    "version": "0.0.14",
     "description": "react component library",
     "scripts": {
         "rollup": "rollup -c "
@@ -12,10 +12,18 @@
         "@rollup/plugin-node-resolve": "^15.2.3",
         "@rollup/plugin-typescript": "^11.1.6",
         "@types/react": "^18.2.73",
-        "react": "^18.2.0",
         "rollup": "^4.13.2",
         "rollup-plugin-dts": "^6.1.0",
+        "rollup-plugin-postcss": "^4.0.2",
         "typescript": "^5.4.3"
+    },
+    "peerDependencies": {
+        "@emotion/react": "^11.10.6",
+        "@emotion/styled": "^11.10.6",
+        "@mui/material": "^5.11.12",
+        "@types/react": "^18.0.28",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0"
     },
     "main": "dist/cjs/index.js",
     "module": "dist/esm/index.js",
@@ -25,5 +33,8 @@
     "types": "dist/index.d.ts",
     "dependencies": {
         "tslib": "^2.6.2"
+    },
+    "publishConfig": {
+        "registry": "https://npm.pkg.github.com/bobsport33"
     }
 }
