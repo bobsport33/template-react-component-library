@@ -1,6 +1,6 @@
 {
     "name": "@bobsport33/template-react-component-library",
-    "version": "0.0.14",
+    "version": "0.0.20",
     "description": "react component library",
     "scripts": {
         "rollup": "rollup -c "
