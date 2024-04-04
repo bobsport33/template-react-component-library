@@ -4,7 +4,8 @@ import LinearProgress from "@mui/material/LinearProgress";
 import styled from "@emotion/styled";
 
 const KPIWrapper = styled.div`
-    width: 23%;
+    width: 100%;
+    max-width: 20%;
     height: 13vh;
 
     .kpi {

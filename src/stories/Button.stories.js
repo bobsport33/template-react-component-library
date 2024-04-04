@@ -1,8 +1,9 @@
 import Button from "../components/Button/Button";
 
 export default {
-    title: "Button",
+    title: "Components/Button",
     component: Button,
+    argTypes: { onClick: { action: "onClick" } },
 };
 
 export const Red = {

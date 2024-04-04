@@ -1,7 +1,7 @@
 import KPI from "../components/KPI/KPI";
 
 export default {
-    title: "KPI",
+    title: "components/KPI",
     component: KPI,
 };
 
