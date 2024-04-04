@@ -1,10 +1,5 @@
 import React from "react";
-// import "./Button.css";
 import { styled } from "@mui/material";
-
-interface ButtonProps {
-    label: string;
-}
 
 const ButtonWrapper = styled("button")`
     font-size: 5rem;
@@ -12,8 +7,12 @@ const ButtonWrapper = styled("button")`
     border: none;
 `;
 
-const Button = (props: ButtonProps) => {
-    return <ButtonWrapper>{props.label}</ButtonWrapper>;
+const Button = (props) => {
+    return (
+        <ButtonWrapper style={{ backgroundColor: props.backgroundColor }}>
+            {props.label}
+        </ButtonWrapper>
+    );
 };
 
 export default Button;

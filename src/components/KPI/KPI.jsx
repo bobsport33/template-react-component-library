@@ -1,13 +1,9 @@
 import React, { useEffect } from "react";
 
 import LinearProgress from "@mui/material/LinearProgress";
-import { styled } from "@mui/material/styles";
+import styled from "@emotion/styled";
 
-interface KPIProps {
-    id: string
-}
-
-const KPIWrapper = styled("div")`
+const KPIWrapper = styled.div`
     width: 23%;
     height: 13vh;
 
@@ -22,23 +18,24 @@ const KPIWrapper = styled("div")`
     }
 `;
 
-const KPI = ({id} : KPIProps) => {
-    // @ts-igonore
-    const app = window.qlikApp;   
+const KPI = ({ id, height, width }) => {
+    const app = window.qlikApp;
 
-    const loadVisualization = (id: string) => {
+    const loadVisualization = (id) => {
         if (id === null) {
             return;
         }
 
         const splitId = id[0].split("|");
-        app.visualization.get(splitId[0]).then((vis: any) => {
+        app.visualization.get(splitId[0]).then((vis) => {
             vis.show(id[0]);
         });
     };
 
     useEffect(() => {
-        loadVisualization(id);
+        if (id) {
+            loadVisualization(id);
+        }
     }, []);
 
     return (
@@ -50,6 +47,6 @@ const KPI = ({id} : KPIProps) => {
             </div>
         </KPIWrapper>
     );
-}
+};
 
-export default KPI
+export default KPI;

@@ -1,20 +1,14 @@
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
-import typescript from "@rollup/plugin-typescript";
-import dts from "rollup-plugin-dts";
+import babel from "@rollup/plugin-babel";
 import postcss from "rollup-plugin-postcss";
 
 import packageJson from "./package.json" assert { type: "json" };
 
 export default [
     {
-        input: "src/index.ts",
+        input: "src/index.js",
         output: [
-            // {
-            //     file: packageJson.main,
-            //     format: "cjs",
-            //     sourcemap: true,
-            // },
             {
                 file: packageJson.module,
                 format: "esm",
@@ -22,21 +16,19 @@ export default [
             },
         ],
         plugins: [
-            resolve(),
+            resolve({ extensions: [".js", ".jsx"] }),
             commonjs(),
-            typescript({ tsconfig: "./tsconfig.json", sourceMap: false }),
-
-            // NEW
-            postcss(),
+            babel({
+                extensions: [".js", ".jsx"],
+                babelHelpers: "runtime", // Use babel runtime helpers
+                presets: ["@babel/preset-env", "@babel/preset-react"], // Presets for babel
+                plugins: ["@babel/plugin-transform-runtime"], // Plugin for babel runtime
+            }),
+            postcss(), // Add your postcss plugin if needed
         ],
-        external: [...Object.keys(packageJson.peerDependencies || {})],
-    },
-    {
-        input: "dist/esm/types/index.d.ts",
-        output: [{ file: "dist/index.d.ts", format: "esm" }],
-        plugins: [dts()],
-
-        // NEW
-        external: [/\.css$/],
+        external: [
+            ...Object.keys(packageJson.peerDependencies || {}),
+            "node_modules/**",
+        ],
     },
 ];
