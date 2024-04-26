@@ -6,7 +6,8 @@ import styled from "@emotion/styled";
 const KPIWrapper = styled.div`
     width: 100%;
     max-width: 20%;
-    height: 13vh;
+    height: 100%;
+    background-color: var(--neutral100);
 
     .kpi {
         height: 100%;

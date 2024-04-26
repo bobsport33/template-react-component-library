@@ -9,7 +9,7 @@ const IconButtonWrapper = styled("button")`
     min-width: 30px !important;
     background-color: #f4f4f4 !important;
     color: #333 !important;
-    border-radius: 20px;
+    /* border-radius: 20px; */
     display: inline-flex;
     -webkit-box-align: center;
     align-items: center;
@@ -46,12 +46,20 @@ const IconButtonWrapper = styled("button")`
         rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
 `;
 
-const IconButton = ({ icon, onClick }) => {
-    return <IconButtonWrapper onClick={onClick}>{icon}</IconButtonWrapper>;
+const IconButton = ({ icon, onClick, round }) => {
+    return (
+        <IconButtonWrapper
+            onClick={onClick}
+            style={{ borderRadius: round ? "20px" : "4px" }}
+        >
+            {icon}
+        </IconButtonWrapper>
+    );
 };
 
 IconButton.propTypes = {
     icon: PropTypes.element,
+    onClick: PropTypes.func,
 };
 
 export default IconButton;
